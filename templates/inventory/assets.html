@@ -1,0 +1,47 @@
+<aside data-component="sidebar"></aside>
+<div class="main-content">
+  <div>
+    <header data-component="topbar"></header>
+    <main class="content">
+      <div class="card-groups">
+        <header>
+          <div>
+            <h1 class="icon-product" data-i18n>{LNG_Inventory}</h1>
+            <p data-i18n>Manage assets, master data, and the latest assignee details</p>
+          </div>
+          <button class="btn btn-primary icon-new" data-action="click.prevent:requestApi" data-api-url="api/inventory/asset/get?modal=1" data-api-method="get" data-i18n>{LNG_Add}
+            {LNG_Inventory}</button>
+        </header>
+        <div class="content-body">
+          <div class="tablebody">
+            <table class="table border fullwidth" data-table="inventoryAssets" data-source="api/inventory/assets" data-default-sort="id desc" data-page-size="25"
+                   data-show-checkbox="true" data-actions='{"delete":"Delete"}' data-action-url="api/inventory/assets/action" data-row-actions='{
+                      "edit": {
+                        "label": "Edit",
+                        "className": "btn btn-success icon-edit"
+                      }
+                    }'>
+              <thead>
+                <tr>
+                  <th data-field="topic" data-sort="topic" data-i18n>{LNG_Equipment}</th>
+                  <th data-field="category_id" data-filter="true" data-type="select" data-sort="category_id" data-format="lookup" data-i18n>{LNG_Category}</th>
+                  <th data-field="type_id" data-filter="true" data-type="select" data-sort="type_id" data-format="lookup" data-i18n>{LNG_Type}</th>
+                  <th data-field="model_id" data-filter="true" data-type="select" data-sort="model_id" data-format="lookup" data-i18n>{LNG_Brand}</th>
+                  <th data-field="first_product_no" data-sort="first_product_no" data-i18n>{LNG_Serial}/{LNG_Registration No}</th>
+                  <th data-field="item_count" class="center" data-cell-class="center" data-sort="item_count" data-i18n>{LNG_Items}</th>
+                  <th data-field="total_stock" class="center" data-cell-class="center" data-sort="total_stock" data-i18n>{LNG_Stock}</th>
+                  <th data-field="inuse" class="center" data-cell-class="center" data-sort="inuse"
+                      data-template="<button class='btn-table-action' data-action='active' data-value='${inuse}'></button>" data-i18n>{LNG_Active}</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <footer class="footer">
+    <p class="center">&copy; 2026 Admin Framework - Powered by <a href="https://nowjs.net">Now.js</a></p>
+  </footer>
+</div>

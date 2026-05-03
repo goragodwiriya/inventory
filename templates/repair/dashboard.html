@@ -1,0 +1,112 @@
+<aside data-component="sidebar"></aside>
+<div class="main-content">
+    <div>
+        <header data-component="topbar"></header>
+        <main class="content">
+            <div class="card-groups" data-component="api" data-endpoint="api/repair/dashboard/cards">
+                <header>
+                    <div>
+                        <h1 class="icon-dashboard" data-i18n>{LNG_Dashboard}</h1>
+                        <p data-i18n>Track repair requests, queue status, and current workload from one place</p>
+                    </div>
+                    <div class="header-actions dashboard-header-actions">
+                        <a class="btn btn-primary icon-product" href="/inventory-myassets" data-i18n>{LNG_My equipment}</a>
+                        <a class="btn btn-primary icon-write" href="/repair-request" data-i18n>{LNG_Get a repair}</a>
+                        <a class="btn btn-warning icon-list" href="/repair-history" data-i18n>{LNG_Repair history}</a>
+                        <a class="btn btn-success icon-tools" href="/repair-jobs" data-if="show_queue_cards" data-i18n>{LNG_Repair jobs}</a>
+                    </div>
+                </header>
+                <div class="content-body dashboard-layout">
+                    <fieldset>
+                        <legend data-i18n>My Repair Requests</legend>
+                        <div class="dashboard-section-head">
+                            <div class="comment" data-i18n>Latest status of the repair requests you submitted</div>
+                        </div>
+                        <div class="dashboard-card-grid">
+                            <div class="dashboard-card-loop" data-for="card of my_status_cards">
+                                <template>
+                                    <a class="dashboard-focus-card" data-attr="href:card.href" data-style="{ borderTopColor: card.color || 'var(--color-primary)' }">
+                                        <div class="dashboard-focus-icon icon-list" data-attr="class:'dashboard-focus-icon ' + (card.icon_class || 'icon-list')"
+                                             data-style="{ color: card.color || 'var(--color-primary)' }"></div>
+                                        <div class="dashboard-focus-content">
+                                            <div class="dashboard-focus-label" data-text="card.label || ''"></div>
+                                            <div class="dashboard-focus-value" data-text="card.count_text || '0'"></div>
+                                            <div class="comment" data-text="card.scope_text || ''"></div>
+                                        </div>
+                                    </a>
+                                </template>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset data-if="show_assigned_cards">
+                        <legend data-i18n>Assigned To Me</legend>
+                        <div class="dashboard-section-head">
+                            <div class="comment" data-i18n>Current jobs where you are the latest assigned repair operator</div>
+                        </div>
+                        <div class="dashboard-card-grid">
+                            <div class="dashboard-card-loop" data-for="card of assigned_status_cards">
+                                <template>
+                                    <a class="dashboard-focus-card" data-attr="href:card.href" data-style="{ borderTopColor: card.color || 'var(--color-primary)' }">
+                                        <div class="dashboard-focus-icon icon-tools" data-attr="class:'dashboard-focus-icon ' + (card.icon_class || 'icon-tools')"
+                                             data-style="{ color: card.color || 'var(--color-primary)' }"></div>
+                                        <div class="dashboard-focus-content">
+                                            <div class="dashboard-focus-label" data-text="card.label || ''"></div>
+                                            <div class="dashboard-focus-value" data-text="card.count_text || '0'"></div>
+                                            <div class="comment" data-text="card.scope_text || ''"></div>
+                                        </div>
+                                    </a>
+                                </template>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset data-if="show_queue_cards">
+                        <legend data-i18n>All repair jobs</legend>
+                        <div class="dashboard-section-head">
+                            <div class="comment" data-i18n>Live repair queue grouped by the latest status of each job</div>
+                        </div>
+                        <div class="dashboard-card-grid">
+                            <div class="dashboard-card-loop" data-for="card of queue_status_cards">
+                                <template>
+                                    <a class="dashboard-focus-card" data-attr="href:card.href" data-style="{ borderTopColor: card.color || 'var(--color-primary)' }">
+                                        <div class="dashboard-focus-icon icon-dashboard" data-attr="class:'dashboard-focus-icon ' + (card.icon_class || 'icon-dashboard')"
+                                             data-style="{ color: card.color || 'var(--color-primary)' }"></div>
+                                        <div class="dashboard-focus-content">
+                                            <div class="dashboard-focus-label" data-text="card.label || ''"></div>
+                                            <div class="dashboard-focus-value" data-text="card.count_text || '0'"></div>
+                                            <div class="comment" data-text="card.scope_text || ''"></div>
+                                        </div>
+                                    </a>
+                                </template>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset data-if="show_department_chart">
+                        <legend data-i18n>Repair Jobs By Department</legend>
+                        <div class="dashboard-section-head">
+                            <div class="comment" data-i18n>Current repair jobs grouped by requester department and latest status</div>
+                        </div>
+                        <div class="dashboard-graph-card">
+                            <div class="dashboard-graph" data-component="graph" data-type="bar" data-url="api/repair/dashboard/department" data-path="series" data-autoload="true"
+                                 data-animation="false" data-max-data-points="0" data-show-legend="true" data-show-grid="true" data-show-data-labels="true"
+                                 data-legend-position="bottom"></div>
+                        </div>
+                    </fieldset>
+                    <fieldset data-if="show_operator_chart">
+                        <legend data-i18n>Repair Jobs By Repair Operator</legend>
+                        <div class="dashboard-section-head">
+                            <div class="comment" data-i18n>Current repair jobs grouped by repair staff and latest status</div>
+                        </div>
+                        <div class="dashboard-graph-card">
+                            <div class="dashboard-graph" data-component="graph" data-type="bar" data-url="api/repair/dashboard/operators" data-path="series" data-autoload="true"
+                                 data-animation="false" data-max-data-points="0" data-show-legend="true" data-show-grid="true" data-show-data-labels="true"
+                                 data-legend-position="bottom"></div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </main>
+    </div>
+    <footer class="footer">
+        <p class="center">&copy; 2026 Admin Framework - Powered by <a href="https://nowjs.net">Now.js</a></p>
+    </footer>
+</div>

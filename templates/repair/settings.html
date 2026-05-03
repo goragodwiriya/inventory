@@ -1,0 +1,53 @@
+<aside data-component="sidebar"></aside>
+<div class="main-content">
+    <div>
+        <header data-component="topbar"></header>
+        <main class="content">
+            <div class="card-groups">
+                <header>
+                    <div>
+                        <h1 class="icon-cog" data-i18n>Module settings</h1>
+                        <p data-i18n>Initial status and running number settings for repair requests</p>
+                    </div>
+                </header>
+                <div class="content-body">
+                    <form data-form="repairSettings" action="api/repair/settings/save" method="POST" data-ajax-submit="true" data-load-api="api/repair/settings/get"
+                          data-confirm="Confirm save">
+                        <fieldset>
+                            <legend class="icon-config" data-i18n>Module settings</legend>
+                            <div>
+                                <label for="repair_first_status" data-i18n>Initial repair status</label>
+                                <span class="form-control icon-tools">
+                                    <select id="repair_first_status" name="repair_first_status" data-options-key="repair_first_status"
+                                            data-attr="value:repair_first_status"></select>
+                                </span>
+                            </div>
+                            <div class="form-group">
+                                <div class="width50">
+                                    <label for="repair_prefix" data-i18n>Prefix</label>
+                                    <span class="form-control icon-number">
+                                        <input type="text" id="repair_prefix" name="repair_prefix" data-attr="value:repair_prefix" placeholder="JOB%Y%M-">
+                                    </span>
+                                </div>
+                                <div class="width50">
+                                    <label for="repair_job_no" data-i18n>Job No.</label>
+                                    <span class="form-control icon-number">
+                                        <input type="text" id="repair_job_no" name="repair_job_no" data-attr="value:repair_job_no" placeholder="%04d">
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="comment" data-i18n>Prefix, if changed The number will be counted again. You can enter %Y%M (year, month)., Number such as %04d (%04d means 4
+                                digits, maximum 11 digits)</div>
+                        </fieldset>
+                        <fieldset class="submit">
+                            <button type="submit" class="btn btn-primary icon-save" data-i18n>Save</button>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+    <footer class="footer">
+        <p class="center">&copy; 2026 Admin Framework - Powered by <a href="https://nowjs.net">Now.js</a></p>
+    </footer>
+</div>

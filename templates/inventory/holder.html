@@ -1,0 +1,40 @@
+<form data-form="inventoryHolder" data-validate="false" data-reset="false" action="api/inventory/holder/save" method="post" data-ajax-submit="true" autocomplete="off">
+    <fieldset>
+        <div data-if="original_product_no != ''">
+            <label data-i18n>{LNG_Equipment}</label>
+            <span class="form-control icon-product">
+                <input type="text" data-attr="value:topic" disabled>
+            </span>
+        </div>
+        <div>
+            <label for="product_no" data-i18n>{LNG_Serial}/{LNG_Registration No}</label>
+            <span class="form-control icon-barcode">
+                <input type="text" id="product_no" name="product_no" data-options-key="product_no" data-attr="value:product_no" maxlength="150" placeholder="{LNG_Type to search}">
+            </span>
+        </div>
+        <!-- Holder - always shown -->
+        <div>
+            <label for="holder_id" data-i18n>{LNG_Holder}</label>
+            <span class="form-control icon-user">
+                <input type="text" id="holder_id" name="holder_id" data-attr="value:holder_id" data-options-key="holder_id" maxlength="150" placeholder="{LNG_Type to search}">
+            </span>
+        </div>
+        <div>
+            <label for="quantity" data-i18n>Assigned qty</label>
+            <span class="form-control icon-cart">
+                <input type="number" id="quantity" name="quantity" min="0" step="0.01" data-attr="value:quantity">
+            </span>
+        </div>
+        <div data-if="original_product_no != ''">
+            <label for="stock_display" data-i18n>{LNG_Stock}</label>
+            <span class="form-control icon-cart">
+                <input type="number" id="stock_display" data-attr="value:stock" disabled>
+            </span>
+        </div>
+    </fieldset>
+    <fieldset class="submit right">
+        <button type="submit" class="btn btn-primary icon-save" data-i18n>Save</button>
+        <input type="hidden" name="original_product_no" data-attr="value:original_product_no">
+        <input type="hidden" name="modal" value="1">
+    </fieldset>
+</form>

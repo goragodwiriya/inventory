@@ -1,0 +1,57 @@
+<aside data-component="sidebar"></aside>
+<div class="main-content">
+    <div>
+        <header data-component="topbar"></header>
+        <main class="content">
+            <div class="card-groups">
+                <header>
+                    <div>
+                        <h1 class="icon-tools" data-i18n>{LNG_Repair jobs}</h1>
+                        <p data-i18n>Inspect open jobs and update the latest repair status</p>
+                    </div>
+                </header>
+                <div class="content-body">
+                    <div class="tablebody">
+                        <table class="table border fullwidth" data-table="repairJobs" data-source="api/repair/jobs" data-default-sort="created_at desc" data-page-size="25"
+                               data-search-columns="job_id,product_no,topic,job_description,customer_name" data-action-url="api/repair/jobs/action" data-row-actions='{
+                                  "view": {
+                                    "title": "View",
+                                    "className": "btn btn-warning icon-search"
+                                  },
+                                  "status": {
+                                    "title": "Status",
+                                    "className": "btn btn-primary icon-valid",
+                                    "condition": "${can_process == true}"
+                                  },
+                                  "edit": {
+                                    "title": "Edit",
+                                    "className": "btn btn-success icon-edit",
+                                    "condition": "${can_edit == true}"
+                                  }
+                                }'>
+                            <thead>
+                                <tr>
+                                    <th data-field="job_id" data-sort="job_id" data-i18n>{LNG_Job No.}</th>
+                                    <th data-field="customer_name" data-sort="customer_name" data-i18n>{LNG_Informer}</th>
+                                    <th data-field="product_no" data-sort="product_no" data-i18n>{LNG_Serial}/{LNG_Registration No}</th>
+                                    <th data-field="topic" data-sort="topic" data-i18n>{LNG_Equipment}</th>
+                                    <th data-field="appointment_date" data-sort="appointment_date" class="center" data-cell-class="center" data-format="date" data-i18n>
+                                        {LNG_Appointment}</th>
+                                    <th data-field="created_at" data-sort="created_at" class="center" data-cell-class="center" data-format="datetime" data-i18n>{LNG_Created}</th>
+                                    <th data-field="operator_id" class="center" data-cell-class="center" data-filter="true" data-type="select" data-format="lookup" data-i18n>
+                                        {LNG_Operator}</th>
+                                    <th data-field="status" class="center" data-cell-class="center" data-filter="true" data-type="select" data-formatter="formatTableOptionStatus"
+                                        data-i18n>{LNG_Repair status}</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <footer class="footer">
+        <p class="center">&copy; 2026 Admin Framework - Powered by <a href="https://nowjs.net">Now.js</a></p>
+    </footer>
+</div>

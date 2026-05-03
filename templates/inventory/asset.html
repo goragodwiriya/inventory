@@ -1,0 +1,91 @@
+<form data-form="inventoryAsset" data-validate="false" data-reset="false" action="api/inventory/asset/save" method="post" data-ajax-submit="true" autocomplete="off">
+    <fieldset>
+        <div class="form-group">
+            <div class="width50">
+                <label for="topic" data-i18n>Equipment</label>
+                <span class="form-control icon-product">
+                    <input type="text" id="topic" name="topic" data-attr="value:topic" maxlength="150">
+                </span>
+            </div>
+            <div class="width50">
+                <label for="category_id" data-i18n>Category</label>
+                <span class="form-control icon-tags">
+                    <select id="category_id" name="category_id" data-options-key="category_id" data-attr="value:category_id">
+                        <option value="" data-i18n>Please select</option>
+                    </select>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="width50">
+                <label for="type_id" data-i18n>Type</label>
+                <span class="form-control icon-list">
+                    <select id="type_id" name="type_id" data-options-key="type_id" data-attr="value:type_id">
+                        <option value="" data-i18n>Please select</option>
+                    </select>
+                </span>
+            </div>
+            <div class="width50">
+                <label for="model_id" data-i18n>Brand</label>
+                <span class="form-control icon-office">
+                    <select id="model_id" name="model_id" data-options-key="model_id" data-attr="value:model_id">
+                        <option value="" data-i18n>Please select</option>
+                    </select>
+                </span>
+            </div>
+        </div>
+        <div class="form-group" data-show="id == 0">
+            <div class="width50">
+                <label for="product_no" data-i18n>{LNG_Serial}/{LNG_Registration No}</label>
+                <span class="form-control icon-barcode">
+                    <input type="text" id="product_no" name="product_no" data-attr="value:product_no" maxlength="150">
+                </span>
+            </div>
+            <div class="width50">
+                <label for="holder_id" data-i18n>{LNG_Holder}</label>
+                <span class="form-control icon-user">
+                    <input type="text" id="holder_id" name="holder_id" data-attr="value:holder_id" data-options-key="holder_id" maxlength="150" placeholder="{LNG_Type to search}">
+                </span>
+            </div>
+        </div>
+        <div class="form-group" data-show="id == 0">
+            <div class="width50">
+                <label for="stock" data-i18n>{LNG_Stock}</label>
+                <span class="form-control icon-cart">
+                    <input type="number" id="stock" name="stock" min="0" step="0.01" data-attr="value:stock">
+                </span>
+            </div>
+            <div class="width50">
+                <label for="unit" data-i18n>Unit</label>
+                <span class="form-control icon-unzip">
+                    <select id="unit" name="unit" data-options-key="unit" data-attr="value:unit">
+                        <option value="" data-i18n>Please select</option>
+                    </select>
+                </span>
+            </div>
+        </div>
+        <div>
+            <label for="detail" data-i18n>{LNG_Details}</label>
+            <span class="form-control icon-file">
+                <textarea id="detail" name="detail" rows="4" data-attr="value:detail"></textarea>
+            </span>
+        </div>
+        <div>
+            <label for="inventory" data-i18n>{LNG_Images}</label>
+            <span class="form-control icon-upload">
+                <input type="file" id="inventory" name="inventory" data-files="inventory" multiple data-preview="true" data-allow-remove-existing="true"
+                       data-action-url="api/inventory/asset/remove-image" accept="image/*">
+            </span>
+            <div class="comment" id="result_inventory" data-i18n>{LNG_Browse image uploaded, type} jpg, jpeg, png, webp</div>
+        </div>
+        <div>
+            <input type="checkbox" class="switch" id="inuse" name="inuse" value="1" data-attr="checked:inuse">
+            <label for="inuse" data-i18n>{LNG_Active}</label>
+        </div>
+    </fieldset>
+    <fieldset class="submit right">
+        <button type="submit" class="btn btn-primary icon-save" data-i18n>Save</button>
+        <input type="hidden" name="id" data-attr="value:id">
+        <input type="hidden" name="modal" value="1">
+    </fieldset>
+</form>

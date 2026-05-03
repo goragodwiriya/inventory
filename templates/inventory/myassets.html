@@ -1,0 +1,46 @@
+<aside data-component="sidebar"></aside>
+<div class="main-content">
+  <div>
+    <header data-component="topbar"></header>
+    <main class="content">
+      <div class="card-groups">
+        <header>
+          <div>
+            <h1 class="icon-product" data-i18n>My equipment</h1>
+            <p data-i18n>View the equipment items currently assigned to you</p>
+          </div>
+        </header>
+        <div class="content-body">
+          <div class="tablebody">
+            <table class="table border fullwidth" data-table="inventoryMyAssets" data-source="api/inventory/myassets" data-default-sort="topic asc" data-page-size="25"
+                   data-action-url="api/inventory/myassets/action" data-row-actions='{
+                                "repair":{
+                                    "label":"Get a repair",
+                                    "className":"btn btn-warning icon-tools",
+                                    "params":{
+                                        "product_no":"{product_no}"
+                                    }
+                                }
+                            }'>
+              <thead>
+                <tr>
+                  <th data-field="topic" data-sort="topic" data-i18n>{LNG_Equipment}</th>
+                  <th data-field="product_no" data-sort="product_no" data-i18n>{LNG_Serial}/{LNG_Registration No}</th>
+                  <th data-field="category_id" data-filter="true" data-type="select" data-sort="category_id" data-format="lookup" data-i18n>{LNG_Category}</th>
+                  <th data-field="type_id" data-filter="true" data-type="select" data-sort="type_id" data-format="lookup" data-i18n>{LNG_Type}</th>
+                  <th data-field="model_id" data-filter="true" data-type="select" data-sort="model_id" data-format="lookup" data-i18n>{LNG_Brand}</th>
+                  <th data-field="inuse" data-filter="true" data-type="select" class="center" data-cell-class="center" data-sort="inuse" data-format="lookup" data-i18n>{LNG_Active}
+                  </th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <footer class="footer">
+    <p class="center">&copy; 2026 Admin Framework - Powered by <a href="https://nowjs.net">Now.js</a></p>
+  </footer>
+</div>
