@@ -1,0 +1,77 @@
+<aside data-component="sidebar"></aside>
+<div class="main-content">
+    <div>
+        <header data-component="topbar"></header>
+        <main class="content">
+            <form data-form="repairRequest" action="api/repair/repair/save" method="post" data-ajax-submit="true" data-load-api="api/repair/repair/get"
+                  data-load-query-params="true" autocomplete="off">
+                <div class="card-groups">
+                    <header>
+                        <div>
+                            <h1 class="icon-tools" data-i18n>{LNG_Get a repair}</h1>
+                            <p data-i18n>Submit a new repair request for a registered asset</p>
+                        </div>
+                        <div class="header-actions">
+                            <a class="btn btn-warning icon-list" href="/repair-history" data-i18n>{LNG_Repair history}</a>
+                        </div>
+                    </header>
+                    <div class="content-body">
+                        <fieldset>
+                            <legend data-i18n>{LNG_Equipment}</legend>
+                            <div>
+                                <label for="product_no" data-i18n>{LNG_Serial}/{LNG_Registration No}</label>
+                                <span class="form-control icon-barcode">
+                                    <input type="text" id="product_no" name="product_no" data-options-key="product_no" data-attr="value:product_no,disabled:!can_edit"
+                                           maxlength="150" placeholder="{LNG_Type to search}">
+                                </span>
+                            </div>
+                            <div class="form-group">
+                                <div class="width50">
+                                    <label for="job_id" data-i18n>{LNG_Job No.}</label>
+                                    <span class="form-control icon-number">
+                                        <input type="text" id="job_id" data-attr="value:job_id" disabled>
+                                    </span>
+                                </div>
+                                <div class="width50">
+                                    <label for="latest_status_text" data-i18n>{LNG_Repair status}</label>
+                                    <span class="form-control icon-star0">
+                                        <input type="text" id="latest_status_text" data-attr="value:latest_status_text" disabled>
+                                    </span>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <legend data-i18n>{LNG_Problems and repairs details}</legend>
+                            <div>
+                                <label for="job_description" data-i18n>{LNG_Problems and repairs details}</label>
+                                <span class="form-control icon-file">
+                                    <textarea id="job_description" name="job_description" rows="5" data-text="job_description" data-attr="disabled:!can_edit"></textarea>
+                                </span>
+                            </div>
+                            <div data-if="id > 0">
+                                <label for="appointment_date" data-i18n>{LNG_Appointment}</label>
+                                <span class="form-control icon-calendar">
+                                    <input type="date" id="appointment_date" name="appointment_date" data-attr="value:appointment_date,disabled:!can_edit">
+                                </span>
+                            </div>
+                            <div data-if="id > 0">
+                                <label for="comment" data-i18n>{LNG_Comment}</label>
+                                <span class="form-control icon-comments">
+                                    <textarea id="comment" name="comment" rows="3" data-text="comment"></textarea>
+                                </span>
+                            </div>
+                            <aside class="warning" data-if="!can_edit" data-i18n>This request can no longer be edited by the requester</aside>
+                        </fieldset>
+                        <fieldset class="submit">
+                            <button type="submit" class="btn btn-primary icon-save" data-attr="disabled:!can_edit" data-i18n>{LNG_Save}</button>
+                            <input type="hidden" name="id" data-attr="value:id">
+                        </fieldset>
+                    </div>
+                </div>
+            </form>
+        </main>
+    </div>
+    <footer class="footer">
+        <p class="center">&copy; 2026 Admin Framework - Powered by <a href="https://nowjs.net">Now.js</a></p>
+    </footer>
+</div>

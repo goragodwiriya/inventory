@@ -1,0 +1,48 @@
+<aside data-component="sidebar"></aside>
+<div class="main-content">
+    <div>
+        <header data-component="topbar"></header>
+        <main class="content">
+            <div class="card-groups">
+                <header>
+                    <div>
+                        <h1 class="icon-cog" data-i18n>{LNG_Module settings}</h1>
+                        <p data-i18n>Inventory upload and warranty notification settings</p>
+                    </div>
+                </header>
+                <div class="content-body">
+                    <form data-form="inventorySettings" action="api/inventory/settings/save" method="POST" data-ajax-submit="true" data-load-api="api/inventory/settings/get"
+                          data-confirm="Confirm save">
+                        <fieldset>
+                            <legend class="icon-thumbnail" data-i18n>{LNG_Size of} {LNG_Image}</legend>
+                            <div>
+                                <label for="inventory_w" data-i18n>{LNG_Width}</label>
+                                <span class="form-control icon-width">
+                                    <input type="number" id="inventory_w" name="inventory_w" min="200" max="3000" data-attr="value:inventory_w">
+                                </span>
+                                <div class="comment" data-i18n>{LNG_Image size is in pixels} ({LNG_resized automatically})</div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <legend class="icon-calendar" data-i18n>Warranty</legend>
+                            <div>
+                                <label for="inventory_warranty_alert_days" data-i18n>Warranty alert days</label>
+                                <span class="form-control icon-warning">
+                                    <input type="number" id="inventory_warranty_alert_days" name="inventory_warranty_alert_days" min="0" max="3650"
+                                           data-attr="value:inventory_warranty_alert_days">
+                                </span>
+                                <div class="comment" data-i18n>Use 0 to disable early warranty reminders</div>
+                            </div>
+                        </fieldset>
+                        <fieldset class="submit">
+                            <button type="submit" class="btn btn-primary icon-save" data-i18n>{LNG_Save}</button>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+    <footer class="footer">
+        <p class="center">&copy; 2026 Admin Framework - Powered by <a href="https://nowjs.net">Now.js</a></p>
+    </footer>
+</div>
